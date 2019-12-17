@@ -15,8 +15,11 @@ namespace WebLicitacoes.Controllers
 
         public IActionResult Index()
         {
-            ListarLicitacacao("SP",1, "engenharia", "3550308");
-            //ListarLicitacacao("SP,BA", 1, "engenharia");
+            //ListarLicitacacao("SP");
+            //ListarLicitacacao("SP","2");
+            ListarLicitacacao("SP", null, "engenharia");
+           // ListarLicitacacao(null,null, null, "3550308");
+
             return View();
         }
 
@@ -27,31 +30,30 @@ namespace WebLicitacoes.Controllers
 
 
 
-        public IActionResult ListarLicitacacao(string estado, int pagina, string ConsultaPalavra, string IbgeMunicipio)
+        public IActionResult ListarLicitacacao(string estado = null, string pagina = null, string ConsultaPalavra = null, string IbgeMunicipio = null)
         {
             string url = null;
             string json;
+            string complementoConsulta = null;
 
-            if (string.IsNullOrEmpty(estado))
-            {
-                estado = "SP";
-            }
 
-            //licitação por estado
-            if(estado != null)
-               // url = @"https://alertalicitacao.com.br/api/v1/licitacoesAbertas/?uf=" + estado;
+            //licitação por estado ou mais de 1 estado
+            if (estado != null && pagina == null && ConsultaPalavra == null)
+                complementoConsulta = "?uf=" + estado;
 
             //licitação por estado e página
-            if (estado != null && pagina > 0)
-             //   url = @"https://alertalicitacao.com.br/api/v1/licitacoesAbertas/?uf=" + estado + " &pagina = " + pagina;
+            if (estado != null && pagina != null && ConsultaPalavra == null)
+                complementoConsulta = "?uf=" + estado + "&pagina=" + pagina;
 
             //licitação por palavra chave e estado, pode ser mais de 1 estado
-            if (estado != null && ConsultaPalavra != null)
-             //   url = @"https://alertalicitacao.com.br/api/v1/licitacoesAbertas/?uf=" + estado + " &palavra_chave = " + ConsultaPalavra;
+            if (estado != null && ConsultaPalavra != null && pagina == null)
+                complementoConsulta= "?uf=" + estado + " & palavra_chave= " + ConsultaPalavra;
 
             //consulta por município usando o código ibge
-            if (IbgeMunicipio != null)
-                url = @"https://alertalicitacao.com.br/api/v1/licitacoesAbertas/?municipio_ibge="+ IbgeMunicipio;
+            if (IbgeMunicipio != null && estado == null && pagina == null && ConsultaPalavra == null)
+                complementoConsulta = "?municipio_ibge="+ IbgeMunicipio;
+
+            url = @"https://alertalicitacao.com.br/api/v1/licitacoesAbertas/" + complementoConsulta;
 
 
             using (WebClient wc = new WebClient())
