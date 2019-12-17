@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebLicitacoes", "WebLicitacoes\WebLicitacoes.csproj", "{BD3E1F8F-D473-4D40-8686-08FEC6717DA6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD3E1F8F-D473-4D40-8686-08FEC6717DA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD3E1F8F-D473-4D40-8686-08FEC6717DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD3E1F8F-D473-4D40-8686-08FEC6717DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD3E1F8F-D473-4D40-8686-08FEC6717DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8455C168-0568-439E-8233-1CFEB23AF697}
+	EndGlobalSection
+EndGlobal
